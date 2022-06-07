@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import {FullInput} from "./components/FullInput";
-
+import {Input} from "./components/Input";
+import {Button} from "./components/Button";
 
 
 function App() {
@@ -10,15 +11,21 @@ function App() {
         {message: "message2"},
         {message: "message3"},
     ])
+    let [title, setTitle] = useState('')
 
-    const addMessage =(title:string)=>{
-        setMessage([{message:title},...message])
+    const addMessage = (title: string) => {
+        setMessage([{message: title}, ...message])
+        setTitle('')
+    }
+    let collBackButtonHandler = () => {
+        addMessage(title)
     }
 
 
     return (
         <div className={'App'}>
-            <FullInput addMessage = {addMessage}/>
+            <Input setTitle={setTitle} title={title}/>
+            <Button name={"+"} collBack={collBackButtonHandler}/>
             {message.map((el, index) => {
                 return (
                     <div key={index}>{el.message} </div>
