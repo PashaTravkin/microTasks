@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {DigitalClock} from "./DigitalClock";
 import {AnalogClock} from "./AnalogClock";
+import {cleanup} from "@testing-library/react";
 
 const Clock = () => {
 
@@ -9,9 +10,12 @@ const Clock = () => {
 
 
     useEffect(() => {
-            setInterval(() => {
+           const setIntervalID = setInterval(() => {
                 setDate(new Date())
             }, 1000)
+        return ()=>{
+               clearInterval(setIntervalID)
+        }
         }, []
     )
 
