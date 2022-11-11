@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
-import {FullInput} from "./components/FullInput";
 import {Input} from "./components/Input";
 import {Button} from "./components/Button";
+import {Reduse} from "./components/Reduse";
+import {ControlledInput, UncontrolledInput} from "./components/UncontrolledInput";
+import Clock from "./components/Clock/Clock";
 
 
 function App() {
@@ -31,6 +33,11 @@ function App() {
                     <div key={index}>{el.message} </div>
                 )
             })}
+            <Reduse/>
+            <UncontrolledInput/>
+            <ControlledInput/>
+            <Clock/>
+
         </div>
     )
 
